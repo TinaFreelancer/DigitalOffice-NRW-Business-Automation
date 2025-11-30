@@ -280,10 +280,20 @@
         }
 
         .story-grid {
-            display: grid;
-            grid-template-columns: 45% 1fr;
-            gap: 4rem;
-            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .story-grid h2 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-grid p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+            text-align: center;
         }
 
         .story-image img {
@@ -344,7 +354,11 @@
         }
 
         @media (max-width: 768px) {
-            .story-grid,
+            .story-grid {
+                max-width: 100%;
+                padding: 0 1rem;
+            }
+            
             .workspace-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
