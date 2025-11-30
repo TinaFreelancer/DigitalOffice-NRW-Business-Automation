@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Muli:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Muli:wght@200;300;400;600;700;800;900&display=swap" rel="stylesheet"></noscript>
     <link rel="icon" href="assets/images/logo-32x32.png" sizes="32x32">
     <link rel="icon" href="assets/images/logo-192x192.png" sizes="192x192">
     
@@ -375,7 +376,7 @@
             <h2 class="section-title text-center">Was Kunden sagen</h2>
             
                <!-- Elfsight Google Reviews | Untitled Google Reviews -->
-<script src="https://elfsightcdn.com/platform.js" async></script>
+<script src="https://elfsightcdn.com/platform.js" defer></script>
 <div class="elfsight-app-48341897-6ae4-4c4d-a58d-9cc673597ab3" data-elfsight-app-lazy></div>
         </div>
     </section>
@@ -471,9 +472,9 @@
     </button>
 
     <!-- JavaScript -->
-    <script src="./assets/js/includes.js"></script>
-    <script src="./assets/js/features.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/includes.js" defer></script>
+    <script src="./assets/js/features.js" defer></script>
+    <script src="./assets/js/main.js" defer></script>
     
     <!-- Accordion Functionality -->
     <script>
