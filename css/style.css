@@ -59,6 +59,25 @@ html, body {
     overflow-x: hidden;
 }
 
+/* Globaler Abstand unter fixem Header, damit Hero-Content nicht verdeckt wird */
+:root {
+    --header-offset-sm: 80px;
+    --header-offset-md: 96px;
+    --header-offset-lg: 112px;
+}
+
+.page-wrapper {
+    padding-top: var(--header-offset-sm);
+}
+
+@media (min-width: 768px) {
+    .page-wrapper { padding-top: var(--header-offset-md); }
+}
+
+@media (min-width: 1024px) {
+    .page-wrapper { padding-top: var(--header-offset-lg); }
+}
+
 body.has-horizontal-overflow * {
     outline: 1px solid rgba(255, 0, 0, 0.15);
 }
@@ -387,7 +406,7 @@ section .container {
 .site-header {
     background-color: var(--color-white);
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    padding: var(--spacing-sm) 5%;
+    padding: calc(var(--spacing-md)) 5%;
     position: fixed;
     top: 0;
     left: 0;
