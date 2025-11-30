@@ -1,8 +1,15 @@
 // Load Header and Footer dynamically
 function loadIncludes() {
+    // Berechne den richtigen relativen Pfad basierend auf der aktuellen Seitenstruktur
+    const pathDepth = (window.location.pathname.match(/\//g) || []).length - 1;
+    const basePath = pathDepth > 0 ? '../'.repeat(pathDepth) : './';
+    
     // Load Header
-    fetch('/includes/header.html')
-        .then(response => response.text())
+    fetch(`${basePath}includes/header.html`)
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.text();
+        })
         .then(data => {
             const placeholder = document.getElementById('header-placeholder');
             if (placeholder) {
@@ -18,12 +25,18 @@ function loadIncludes() {
         .catch(err => console.error('Header konnte nicht geladen werden:', err));
 
     // Load Footer
-    fetch('/includes/footer.html')
-        .then(response => response.text())
+    fetch(`${basePath}includes/footer.html`)
+        .then(response => {
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return response.text();
+        })
         .then(data => {
-            document.getElementById('footer-placeholder').innerHTML = data;
-            // Event auslösen nach Footer-Laden für URL-Normalisierung
-            document.dispatchEvent(new Event('footer-loaded'));
+            const placeholder = document.getElementById('footer-placeholder');
+            if (placeholder) {
+                placeholder.innerHTML = data;
+                // Event auslösen nach Footer-Laden für URL-Normalisierung
+                document.dispatchEvent(new Event('footer-loaded'));
+            }
         })
         .catch(err => console.error('Footer konnte nicht geladen werden:', err));
 }
