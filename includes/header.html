@@ -2,7 +2,7 @@
 <header class="site-header">
     <div class="header-content">
         <a href="/" class="logo">
-            <img src="/assets/images/logo.png" alt="Digital Office NRW Logo" width="300" height="175">
+            <img src="/assets/images/logo.png" alt="Digital Office NRW Logo" width="300" height="175" data-critical="true" fetchpriority="high" decoding="async">
         </a>
         <div class="header-right">
             <nav class="main-nav">
@@ -11,19 +11,19 @@
                     <span></span>
                     <span></span>
                 </button>
-                <ul class="nav-menu">
-                    <li><a href="/">Start</a></li>
-                    <li class="has-dropdown">
-                        <a href="/angebot/">Angebot</a>
-                        <ul class="dropdown">
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a role="menuitem" href="/">Start</a></li>
+                    <li class="has-dropdown" role="none">
+                        <a role="menuitem" aria-haspopup="true" aria-expanded="false" href="/angebot/">Angebot</a>
+                        <ul class="dropdown" role="menu">
                             <li><a href="/angebot/webdesign-pflege/">Webdesign & Entwicklung</a></li>
                             <li><a href="/angebot/newsletter-marketing-funnel/">Newsletter Marketing</a></li>
                         </ul>
                     </li>
-                    <li><a href="/kombi-pakete/">Kombi Pakete</a></li>
-                    <li><a href="/Toolheldin/">Automatisierung & Technik</a></li>
-                    <li><a href="/ueber-mich/">Über mich</a></li>
-                    <li><a href="/kontakt/">Kontakt</a></li>
+                    <li role="none"><a role="menuitem" href="/kombi-pakete/">Kombi Pakete</a></li>
+                    <li role="none"><a role="menuitem" href="/Toolheldin/">Automatisierung & Technik</a></li>
+                    <li role="none"><a role="menuitem" href="/ueber-mich/">Über mich</a></li>
+                    <li role="none"><a role="menuitem" href="/kontakt/">Kontakt</a></li>
                 </ul>
             </nav>
             <div class="header-social-links">

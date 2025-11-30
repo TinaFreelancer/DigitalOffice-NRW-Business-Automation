@@ -20,6 +20,10 @@ function loadIncludes() {
                 initMobileMenu();
                 // Custom Event für nachgeladene Header-Initialisierung
                 document.dispatchEvent(new Event('header-loaded'));
+                // Performance: Preconnect zu Optimole CDN
+                addPreconnect('https://mlrkphgmmzx5.i.optimole.com');
+                // Performance: Perf-Skript einmalig laden
+                loadPerfScriptOnce();
             }
         })
         .catch(err => console.error('Header konnte nicht geladen werden:', err));
@@ -84,10 +88,86 @@ function initMobileMenu() {
     }
 }
 
+// Keyboard Accessibility for Dropdowns
+function initDropdownKeyboardUX() {
+    const dropdownParents = document.querySelectorAll('.has-dropdown');
+    dropdownParents.forEach(parent => {
+        const trigger = parent.querySelector('a[aria-haspopup="true"]');
+        const submenu = parent.querySelector('.dropdown');
+        if (!trigger || !submenu) return;
+
+        // Open on focus
+        trigger.addEventListener('focus', () => {
+            parent.classList.add('active');
+            trigger.setAttribute('aria-expanded', 'true');
+        });
+
+        // Close on blur (delay to allow focus into submenu)
+        trigger.addEventListener('blur', () => {
+            setTimeout(() => {
+                if (!parent.contains(document.activeElement)) {
+                    parent.classList.remove('active');
+                    trigger.setAttribute('aria-expanded', 'false');
+                }
+            }, 100);
+        });
+
+        // Close on Escape
+        parent.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                parent.classList.remove('active');
+                trigger.setAttribute('aria-expanded', 'false');
+                trigger.focus();
+            }
+        });
+
+        // Allow arrow down to move into submenu
+        trigger.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                const firstItem = submenu.querySelector('a');
+                if (firstItem) firstItem.focus();
+            }
+        });
+    });
+}
+
+// Add preconnect link to head if not present
+function addPreconnect(href) {
+    const head = document.head;
+    if (!head) return;
+    const existing = head.querySelector(`link[rel="preconnect"][href="${href}"]`);
+    if (existing) return;
+    const link = document.createElement('link');
+    link.rel = 'preconnect';
+    link.href = href;
+    link.crossOrigin = '';
+    head.appendChild(link);
+}
+
+// Dynamically load perf.js once
+function loadPerfScriptOnce() {
+    if (window.__perfScriptLoaded) return;
+    window.__perfScriptLoaded = true;
+    const script = document.createElement('script');
+    script.src = './assets/js/perf.js';
+    script.defer = true;
+    document.head.appendChild(script);
+}
+
 // Run when DOM is ready
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', loadIncludes);
+    document.addEventListener('DOMContentLoaded', () => {
+        loadIncludes();
+        // init after header is injected
+        document.addEventListener('header-loaded', () => {
+            initDropdownKeyboardUX();
+        });
+    });
 } else {
     loadIncludes();
+    document.addEventListener('header-loaded', () => {
+        initDropdownKeyboardUX();
+    });
 }
 
