@@ -1,0 +1,116 @@
+// ================================
+// ACCORDION FUNCTIONALITY
+// ================================
+document.addEventListener('DOMContentLoaded', function() {
+    const accordionHeaders = document.querySelectorAll('.accordion-header');
+    
+    accordionHeaders.forEach(header => {
+        header.addEventListener('click', function() {
+            const accordionItem = this.parentElement;
+            const isActive = accordionItem.classList.contains('active');
+            
+            // Close all accordion items
+            document.querySelectorAll('.accordion-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                accordionItem.classList.add('active');
+            }
+        });
+    });
+    
+    // Open first accordion item by default
+    const firstAccordion = document.querySelector('.accordion-item');
+    if (firstAccordion) {
+        firstAccordion.classList.add('active');
+    }
+});
+
+// ================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href !== '#' && href !== '') {
+            e.preventDefault();
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+    });
+});
+
+// ================================
+// LAZY LOADING IMAGES
+// ================================
+if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                }
+                observer.unobserve(img);
+            }
+        });
+    });
+    
+    document.querySelectorAll('img[data-src]').forEach(img => {
+        imageObserver.observe(img);
+    });
+}
+
+// ================================
+// SCROLL ANIMATIONS (OPTIONAL)
+// ================================
+const observeElements = () => {
+    const elements = document.querySelectorAll('.service-card, .step-card');
+    
+    const options = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, options);
+    
+    elements.forEach(el => {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(20px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    });
+};
+
+// Run scroll animations on load
+observeElements();
+// ================================
+// CONTACT FORM CHARACTER COUNTER
+// ================================
+document.addEventListener('DOMContentLoaded', function() {
+    const messageTextarea = document.querySelector('.form-textarea');
+    const charCounter = document.querySelector('.char-counter');
+    
+    if (messageTextarea && charCounter) {
+        messageTextarea.addEventListener('input', function() {
+            const currentLength = this.value.length;
+            const maxLength = this.getAttribute('maxlength') || 350;
+            charCounter.textContent = ` / `;
+        });
+    }
+});

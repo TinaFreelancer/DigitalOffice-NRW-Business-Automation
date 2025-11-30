@@ -1,0 +1,59 @@
+# ----------------------------------------------
+# Digital Office NRW - Basis .htaccess
+# Static Export Hardening, Performance & SEO
+# ----------------------------------------------
+
+# Rewrite einschalten
+RewriteEngine On
+
+# 1. HTTPS erzwingen
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2. WWW entfernen (auf non-www umleiten) - falls www gewünscht, diesen Block auskommentieren
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+# 3. Trailing Slash normalisieren für Verzeichnisse (optional)
+#RewriteCond %{REQUEST_FILENAME} -d
+#RewriteRule ^(.+[^/])$ https://%{HTTP_HOST}/$1/ [R=301,L]
+
+# 4. GZIP/Deflate Kompression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/plain text/html text/xml text/css text/javascript application/javascript application/json image/svg+xml
+</IfModule>
+
+# 5. Browser-Caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType text/javascript "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/jpg  "access plus 1 year"
+  ExpiresByType image/png  "access plus 1 year"
+  ExpiresByType image/gif  "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# 6. Security Headers
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header always set Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+</IfModule>
+
+# 7. Fallback auf index.html für alte WP-Links (optional aktivierbar)
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . /index.html [L]
+
+# 8. 404 eigene Seite (optional)
+#ErrorDocument 404 /404.html
+
+# Ende

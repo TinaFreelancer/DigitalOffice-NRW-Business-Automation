@@ -1,0 +1,54 @@
+# Robots.txt für Digital Office NRW
+# Statische Website - SEO-optimiert
+# Letzte Aktualisierung: 26. November 2025
+
+# Alle Suchmaschinen-Crawler willkommen
+User-agent: *
+Allow: /
+
+# Interne/technische Seiten blockieren
+Disallow: /apprentice-registration-page/
+Disallow: /tcb_symbol/
+
+# Spezielle Crawler-Regeln
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Crawl-delay: 1
+
+# KI-Bots erlaubt (für AI-Suche wie ChatGPT, Perplexity, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Nur aggressive Scraper blockieren
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+# Sitemaps
+Sitemap: https://digitalofficenrw.com/sitemap_index.xml
+Sitemap: https://digitalofficenrw.com/sitemap.xml

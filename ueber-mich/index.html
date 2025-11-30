@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Über mich | Marketing für Unternehmer mit Struktur & Herz</title>
+    <meta name="description" content="Lerne mich kennen: Ich bin Tina – deine Partnerin für Marketing mit Struktur. Für Unternehmer die Klarheit wollen.">
+    <link rel="canonical" href="./index.html">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Muli:300,400,600,900&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="./../assets/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="./../assets/images/favicon-192x192.png" sizes="192x192">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="./../css/style.css">
+    <style>
+        /* Über mich - Hero volle Breite */
+        .about-hero.gradient-hero {
+            max-width: 100%;
+            margin: 0;
+            padding: 4rem 0 3rem 0;
+        }
+        
+        .about-hero.gradient-hero .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+        }
+        
+        .about-hero .hero-content {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            align-items: center;
+            gap: 4rem;
+            margin: 2.5rem 0;
+        }
+        
+        .about-hero .hero-text {
+            flex: 1 1 60%;
+            min-width: 0;
+        }
+        
+        .about-hero .hero-image {
+            flex: 0 0 480px;
+            width: 480px;
+        }
+        
+        .about-hero .hero-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .about-hero h1 {
+            font-size: 2.75rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .about-hero .hero-subtitle {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+                    text-align: left;
+        }
+        
+        .about-hero .icon-list {
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+        
+        .about-hero .hero-cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-start;
+        }
+        /* CTA-Zeile unter dem Grid */
+        .about-hero .hero-cta-row {
+            justify-content: center;
+        }
+        
+        .about-hero .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem;
+            margin-top: 3.5rem;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.25);
+            text-align: center;
+        }
+        
+        .about-hero .hero-metrics strong {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 0.75rem;
+            font-weight: 900;
+        }
+        
+        .about-hero .hero-metrics p {
+            font-size: 1rem;
+            opacity: 0.9;
+                    line-height: 1.5;
+                }
+        
+                .about-hero .eyebrow {
+                    text-align: center;
+                    margin-bottom: 1rem;
+                }
+        
+                .about-hero .breadcrumb {
+                    justify-content: center;
+                }
+        
+                @media (max-width: 1024px) {
+                    .about-hero.gradient-hero .container {
+                        padding: 0 2rem;
+                        max-width: 100%;
+                    }
+            
+                    .about-hero .hero-content {
+                        gap: 3rem;
+                    }
+            
+                    .about-hero .hero-image {
+                        flex: 0 0 420px;
+                        width: 420px;
+                    }
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero.gradient-hero {
+                padding: 2.5rem 0;
+            }
+            
+            .about-hero.gradient-hero .container {
+                padding: 0 1.5rem;
+            }
+            
+            .about-hero .hero-content {
+                grid-template-columns: 1fr;
+            }
+            
+                            .about-hero .hero-text {
+                                flex: 1 1 100%;
+                gap: 2rem;
+            }
+            
+            .about-hero .hero-image {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 320px;
+                text-align: center;
+            }
+            
+            .about-hero .hero-subtitle {
+                text-align: center;
+            }
+            
+            .about-hero .eyebrow {
+                text-align: center;
+            }
+            
+            .about-hero .breadcrumb {
+                justify-content: center;
+            }
+            
+            .about-hero .icon-list {
+                text-align: left;
+            }
+            
+            .about-hero .hero-cta-group {
+                justify-content: center;
+                flex-direction: column;
+                margin: 0 auto;
+            }
+            
+            .about-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .about-hero .hero-metrics {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        /* Service Grid Verbesserungen */
+        /* Override global Grid auf Section-Ebene: Section selbst soll kein Grid sein */
+        .about-page .service-boxes {
+            display: block !important;
+        }
+
+        .service-boxes {
+            background: var(--color-white);
+            padding: 3rem 0;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+        }
+        
+        .service-box {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-top: 4px solid var(--color-primary);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+            transition: transform .2s ease, box-shadow .2s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+        
+        .service-box:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+        }
+        
+        .service-icon {
+            width: 56px;
+            height: 56px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.05));
+            color: var(--color-primary);
+            margin-bottom: .5rem;
+        }
+        
+        .service-box h3 {
+            margin: .25rem 0 .25rem;
+        }
+        
+        .service-box p {
+            margin: 0 0 .5rem;
+            flex: 1;
+        }
+        
+        .service-link {
+            align-self: flex-start;
+            margin-top: auto;
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid transparent;
+            transition: color .2s ease, border-color .2s ease;
+        }
+        
+        .service-link:hover {
+            color: var(--color-accent);
+            border-color: var(--color-accent);
+        }
+        
+        @media (max-width: 1024px) {
+            .service-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .service-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* About Story Section */
+        .about-story {
+            padding: 4rem 0;
+            background: var(--color-white);
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 45% 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .story-text h2 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .story-text p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+        }
+
+        /* Workspace Section */
+        .about-workspace {
+            padding: 4rem 0;
+        }
+
+        .workspace-grid {
+            display: grid;
+            grid-template-columns: 1fr 45%;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .workspace-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .workspace-text h2 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .workspace-text p {
+            margin-bottom: 1.25rem;
+            line-height: 1.7;
+        }
+
+        .workspace-text .icon-list {
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 1024px) {
+            .story-grid,
+            .workspace-grid {
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .story-grid,
+            .workspace-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .story-image,
+            .workspace-image {
+                order: -1;
+            }
+
+            .about-story,
+            .about-workspace {
+                padding: 2.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body class="about-page">
+    <!-- Header wird hier geladen -->
+    <div id="header-placeholder"></div>
+
+    <div class="page-wrapper">
+    <main id="main-content">
+        <section class="about-hero hero gradient-hero fade-in">
+            <div class="container">
+                <nav class="breadcrumb" aria-label="Breadcrumb">
+                    <a href="./../index.html">Home</a> / <span>Über mich</span>
+                </nav>
+                <p class="eyebrow">Marketing mit Struktur & Herz</p>
+                <h1 class="hero-title">Ich bin Tina – deine Partnerin für digitale Sichtbarkeit</h1>
+                <div class="hero-content about-hero-content">
+                    <div class="hero-text">
+                        <p class="hero-subtitle">Ich verbinde Strategie, Technik und empathische Kommunikation, damit dein Business online professionell aufgestellt ist, ohne dass du dich in Tools verlierst.</p>
+                        <ul class="icon-list">
+                            <li>
+                                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>Automatisierte Funnels & E-Mail-Marketing, das persönlich wirkt</span>
+                            </li>
+                            <li>
+                                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>Webdesign, das deine Expertise klar kommuniziert und Vertrauen aufbaut</span>
+                            </li>
+                            <li>
+                                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>Technik + Systeme, die zuverlässig funktionieren und dir Zeit zurückgeben</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hero-image">
+                        <img src="./../assets/images/draußen mit laptop.png" alt="Tina draußen mit Laptop" width="360" height="360">
+                    </div>
+                </div>
+                <div class="hero-cta-group hero-cta-row">
+                    <a class="cta-button-primary" href="./../kontakt/index.html" aria-label="Kostenloses Kennenlerngespräch vereinbaren">Kennenlerngespräch vereinbaren</a>
+                    <a class="cta-button-secondary" href="./../angebot/index.html">Meine Angebote entdecken</a>
+                </div>
+                <div class="hero-metrics">
+                    <div>
+                        <strong>+8 Jahre</strong>
+                        <p>digitale Projekte mit Fokus auf Automatisierung</p>
+                    </div>
+                    <div>
+                        <strong>50+</strong>
+                        <p>Unternehmer:innen betreut in Sichtbarkeit & Technik</p>
+                    </div>
+                    <div>
+                        <strong>100%</strong>
+                        <p>strategisch & empathisch durchgeführte Kampagnen</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Persönliche Story mit Foto -->
+        <section class="about-story fade-in">
+            <div class="container">
+                <div class="story-grid">
+                    <div class="story-image">
+                        <img src="./../assets/images/Home Office.png" alt="Tina in der Stadt unterwegs" width="500" height="600" loading="lazy">
+                    </div>
+                    <div class="story-text">
+                        <h2>Warum ich an deiner Seite starte</h2>
+                        <p>Online-Marketing und Technik soll dich entlasten, nicht überfordern. Ich gestalte deinen digitalen Auftritt so, dass er nicht nur sichtbar ist, sondern konsequent dein Werteversprechen transportiert und deinen Kunden einen klaren Pfad bietet.</p>
+                        <p>Seit über 8 Jahren helfe ich Unternehmer:innen dabei, ihre digitale Präsenz strategisch aufzubauen – mit Fokus auf Automatisierung, klare Prozesse und echte Entlastung. Nicht mehr Tools, sondern die richtigen Systeme.</p>
+                        <p><strong>Mein Fokus liegt auf nachhaltiger Umsetzung:</strong> klare Prozesse, weniger Tools, mehr Wirkung.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-intro">
+            <div class="container">
+                <div class="callout-box" style="display: none;">
+                    <h2>Warum ich an deiner Seite starte</h2>
+                    <p>Online-Marketing und Technik soll dich entlasten, nicht überfordern. Ich gestalte deinen digitalen Auftritt so, dass er nicht nur sichtbar ist, sondern konsequent dein Werteversprechen transportiert und deinen Kunden einen klaren Pfad bietet.</p>
+                    <p>Mein Fokus liegt auf nachhaltiger Umsetzung: klare Prozesse, weniger Tools, mehr Wirkung.</p>
+                </div>
+                
+                <h3 style="text-align: center; margin-top: 3rem; margin-bottom: 2rem;">Meine drei Säulen</h3>
+                <div class="two-columns" style="margin-top: 2rem;">
+                    <ul class="icon-list">
+                        <li>
+                            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                                <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                            </svg>
+                            <span><strong>Strategie</strong> – Positionierung, Messaging und UX in einem roten Faden.</span>
+                        </li>
+                        <li>
+                            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"></path>
+                            </svg>
+                            <span><strong>Technik</strong> – Automatisierte Support-Systeme, E-Mail Funnels und Tool-Setup.</span>
+                        </li>
+                    </ul>
+                    <ul class="icon-list">
+                        <li>
+                            <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="3" y1="9" x2="21" y2="9"></line>
+                                <line x1="9" y1="21" x2="9" y2="9"></line>
+                            </svg>
+                            <span><strong>Design</strong> – Klar strukturierte Websites, die Vertrauen aufbauen.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Arbeitsweise mit Foto -->
+        <section class="about-workspace fade-in alternate-bg">
+            <div class="container">
+                <div class="workspace-grid">
+                    <div class="workspace-text">
+                        <h2>Wie ich arbeite</h2>
+                        <p>Ich arbeite remote, flexibel und mit klaren Prozessen. Mein Ansatz ist empathisch und gleichzeitig strukturiert – ich höre zu, analysiere und setze dann gezielt um.</p>
+                        <ul class="icon-list">
+                            <li>
+                                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>Transparente Kommunikation – du weißt immer, wo wir stehen</span>
+                            </li>
+                            <li>
+                                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>Dokumentierte Systeme – nichts bleibt "Geheimwissen"</span>
+                            </li>
+                            <li>
+                                <svg class="icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span>Langfristig gedacht – Systeme, die mit dir wachsen</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="workspace-image">
+                        <img src="./../assets/images/draußen mit brille.png" alt="Tina bei der Arbeit am Laptop" width="500" height="600" loading="lazy">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="service-boxes fade-in">
+            <div class="container">
+                <h2 class="section-title-large">Was ich konkret für dich leiste</h2>
+                <div class="service-grid">
+                    <article class="service-box">
+                        <div class="service-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
+                        </div>
+                        <h3>Webdesign mit System</h3>
+                        <p>Professionelle Websites mit Fokus auf Conversion, die sich leicht pflegen lassen und in deine Systeme integriert sind.</p>
+                        <a class="service-link" href="./../angebot/webdesign-pflege/index.html" aria-label="Mehr zu Webdesign mit System">Mehr erfahren</a>
+                    </article>
+                    <article class="service-box">
+                        <div class="service-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3>Automatisierte Customer Journeys</h3>
+                        <p>E-Mail-Funnels, Workflows und Lead-Magneten, die deine Zielgruppe zur richtigen Zeit erreichen.</p>
+                        <a class="service-link" href="./../angebot/newsletter-marketing-funnel/index.html" aria-label="Mehr zu Automatisierten Customer Journeys">Mehr erfahren</a>
+                    </article>
+                    <article class="service-box">
+                        <div class="service-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"></path>
+                            </svg>
+                        </div>
+                        <h3>Technik managen lassen</h3>
+                        <p>Ich übernehme Tool-Setup, Schnittstellen & Wartung, damit du dich auf deine Expertise konzentrieren kannst.</p>
+                        <a class="service-link" href="./../kombi-pakete/index.html" aria-label="Mehr zu Technik & Kombi-Paketen">Mehr erfahren</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="comparison-section" aria-label="So arbeite ich">
+            <div class="container">
+                <h2>Mein Prozess: Klar & transparent</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker">01</div>
+                        <div class="timeline-content">
+                            <h3>Analyse & Zielsetzung</h3>
+                            <p>Wir klären dein Zielbild, Zielgruppe und bestehende Prozesse.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">02</div>
+                        <div class="timeline-content">
+                            <h3>Strategie & Konzept</h3>
+                            <p>Ich entwickle eine maßgeschneiderte Lösung aus Strategie, Messaging und Technik.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">03</div>
+                        <div class="timeline-content">
+                            <h3>Umsetzung & Launch</h3>
+                            <p>Design, Automationen und Inhalte werden umgesetzt und getestet.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker">04</div>
+                        <div class="timeline-content">
+                            <h3>Optimierung & Betreuung</h3>
+                            <p>Ich bleibe an deiner Seite, passe Prozesse an und begleite dich bei der Skalierung.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+                  <!-- Elfsight Google Reviews | Untitled Google Reviews -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-48341897-6ae4-4c4d-a58d-9cc673597ab3" data-elfsight-app-lazy></div>
+        </div>
+    </section>
+
+        <section class="faq">
+            <div class="container">
+                <h2>Häufige Fragen</h2>
+                <div class="faq-accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-toggle" aria-expanded="false" aria-controls="faq-1">
+                            <span>Welche Tools nutzt du?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div id="faq-1" class="accordion-content">
+                            <p>Ich arbeite mit bewährten Systemen wie Mailchimp, ActiveCampaign, WordPress/Thrive und Zapier, kombiniere sie mit schlanken Automationen und passe alles individuell an.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle" aria-expanded="false" aria-controls="faq-2">
+                            <span>Wie läuft die Zusammenarbeit ab?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div id="faq-2" class="accordion-content">
+                            <p>Nach dem Kennenlerngespräch folgen Konzept, Inhalte, Umsetzung und eine gemeinsame Launch-Phase. Danach begleite ich dich bei Bedarf weiter.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle" aria-expanded="false" aria-controls="faq-3">
+                            <span>Was kostet eine Zusammenarbeit?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div id="faq-3" class="accordion-content">
+                            <p>Die Preise richten sich nach Umfang. Ich passe Angebote an dein Paket an – vom Starter-Set bis zur vollumfänglichen Betreuung.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle" aria-expanded="false" aria-controls="faq-4">
+                            <span>Wie viel Erfahrung hast du im digitalen Marketing?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div id="faq-4" class="accordion-content">
+                            <p>Ich arbeite seit über 8 Jahren im digitalen Marketing mit Fokus auf Automatisierung und Conversion-Optimierung. In dieser Zeit habe ich über 50 Unternehmer:innen bei ihrer digitalen Sichtbarkeit begleitet.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle" aria-expanded="false" aria-controls="faq-5">
+                            <span>Für welche Branchen arbeitest du?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div id="faq-5" class="accordion-content">
+                            <p>Ich arbeite branchenübergreifend, vor allem mit Coaches, Berater:innen, Kreativagenturen und Online-Business-Inhabern. Wichtig ist mir, dass du Wert auf klare Kommunikation und strukturierte Prozesse legst.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle" aria-expanded="false" aria-controls="faq-6">
+                            <span>Arbeitest du auch remote?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div id="faq-6" class="accordion-content">
+                            <p>Ja, die gesamte Zusammenarbeit erfolgt remote via Zoom, E-Mail und Projektmanagement-Tools. Das ermöglicht flexible Termine und ortsunabhängiges Arbeiten.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle" aria-expanded="false" aria-controls="faq-7">
+                            <span>Wie lange dauert ein typisches Projekt?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div id="faq-7" class="accordion-content">
+                            <p>Die Dauer hängt vom Umfang ab: Ein Webdesign-Projekt dauert 4-6 Wochen, ein E-Mail-Funnel 2-4 Wochen. Bei kombinierten Paketen plane ich 6-8 Wochen ein.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle" aria-expanded="false" aria-controls="faq-8">
+                            <span>Bietest du auch laufenden Support an?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div id="faq-8" class="accordion-content">
+                            <p>Ja, nach Projektabschluss biete ich monatliche Betreuungspakete für Wartung, Optimierung und technischen Support an. So bleibst du langfristig gut aufgestellt.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle" aria-expanded="false" aria-controls="faq-9">
+                            <span>Was unterscheidet dich von anderen Dienstleistern?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div id="faq-9" class="accordion-content">
+                            <p>Ich verbinde strategisches Denken mit empathischer Kommunikation und technischem Know-how. Du bekommst keine 08/15-Lösungen, sondern individuell angepasste Systeme, die zu deinem Business passen.</p>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <button class="accordion-toggle" aria-expanded="false" aria-controls="faq-10">
+                            <span>Kann ich dich auch für einzelne Teilprojekte buchen?</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div id="faq-10" class="accordion-content">
+                            <p>Ja, du kannst mich auch für einzelne Dienstleistungen buchen – z.B. nur für Webdesign, nur für E-Mail-Marketing oder nur für Tool-Setup. Ich passe mich deinen Bedürfnissen an.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="cta-title">Bereit für klare Technik & Wirkung?</h2>
+                <p class="cta-subtitle">Ich begleite dich in die Automatisierung, damit du mehr Freiheit gewinnst und dein Business wachsen kann.</p>
+                <div class="hero-cta-group">
+                    <a class="cta-button-primary cta-button-large" href="./../kontakt/index.html">Jetzt Kennenlerntermin buchen</a>
+                    <a class="cta-button-secondary" href="./../angebot/index.html">Leistungen im Überblick</a>
+                </div>
+                <p class="social-proof">„Digital Office NRW“ steht für Struktur, Herz und Umsetzungskraft.</p>
+            </div>
+        </section>
+    </main>
+    </div>
+
+    <!-- Footer wird hier geladen -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Zurück nach oben">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 19V5M5 12l7-7 7 7"/>
+        </svg>
+    </button>
+
+    <!-- Sticky CTA Bar -->
+    <div class="sticky-cta-bar" id="sticky-cta">
+        <div class="container">
+            <span class="sticky-cta-text">Bereit für klare Technik & Wirkung?</span>
+            <a href="./../kontakt/index.html" class="cta-button-primary">Jetzt anfragen</a>
+        </div>
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="./../assets/js/includes.js"></script>
+    <script src="./../assets/js/features.js"></script>
+    <script src="./../assets/js/main.js"></script>
+    
+    <!-- Page Specific Scripts -->
+    <script>
+    // Sticky CTA Bar
+    window.addEventListener('scroll', function() {
+        const stickyBar = document.getElementById('sticky-cta');
+        const scrollPosition = window.scrollY;
+        const windowHeight = window.innerHeight;
+        
+        if (scrollPosition > windowHeight * 0.5) {
+            stickyBar.classList.add('visible');
+        } else {
+            stickyBar.classList.remove('visible');
+        }
+    });
+    
+    </script>
+</body>
+</html>
