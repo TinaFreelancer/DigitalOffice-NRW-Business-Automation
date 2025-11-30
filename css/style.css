@@ -692,11 +692,23 @@ section .container {
     color: var(--color-primary);
 }
 
+.has-dropdown {
+    position: relative;
+}
+
 .has-dropdown .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 250px;
+    background: var(--color-white);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border-radius: var(--radius-md);
     list-style: none;
-    padding-left: var(--spacing-sm);
-    margin-top: 0.5rem;
+    padding: 0.5rem 0;
+    margin: 0;
     display: none;
+    z-index: 1000;
 }
 
 .has-dropdown:hover .dropdown,
