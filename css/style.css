@@ -1748,23 +1748,40 @@ section .container {
         gap: var(--spacing-sm);
     }
     
+    .nav-menu > li {
+        position: relative;
+    }
+    
     .has-dropdown .dropdown {
         position: absolute;
         top: 100%;
         left: 0;
         background: var(--color-white);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        padding: var(--spacing-xs);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 0.5rem 0;
         border-radius: 0.5rem;
-        margin-top: 0.5rem;
-        min-width: 220px;
-        z-index: 9999;
-        display: none;
+        margin-top: 0.25rem;
+        min-width: 250px;
+        z-index: 99999;
+        display: none !important;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
     }
     
-    .has-dropdown:hover .dropdown,
-    .has-dropdown.active .dropdown {
+    .has-dropdown:hover .dropdown {
+        display: block !important;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .dropdown li a {
         display: block;
+        padding: 0.75rem 1.25rem;
+        color: var(--color-text-dark);
+        white-space: nowrap;
     }
     
     /* Show header social links on desktop */
