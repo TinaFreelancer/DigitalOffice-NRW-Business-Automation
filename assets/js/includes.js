@@ -22,6 +22,8 @@ function loadIncludes() {
         .then(response => response.text())
         .then(data => {
             document.getElementById('footer-placeholder').innerHTML = data;
+            // Event auslösen nach Footer-Laden für URL-Normalisierung
+            document.dispatchEvent(new Event('footer-loaded'));
         })
         .catch(err => console.error('Footer konnte nicht geladen werden:', err));
 }

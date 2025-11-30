@@ -1,5 +1,62 @@
 // Features JavaScript - Cookie Banner, Dark Mode, Back to Top, Scroll Animations
 
+// ===== URL NORMALIZATION (index.html entfernen) =====
+(function() {
+    try {
+        var loc = window.location;
+        if (/\/index\.html($|[?#])/.test(loc.pathname)) {
+            var cleanPath = loc.pathname.replace(/index\.html$/, '');
+            window.history.replaceState(null, '', cleanPath + loc.search + loc.hash);
+        }
+    } catch (e) {}
+
+    function normalizeHref(href) {
+        if (!href) return href;
+        // Nur interne Links anpassen: absolut gleiche Origin oder relative Pfade
+        var isAbsolute = /^(https?:)?\/\//i.test(href);
+        if (isAbsolute) {
+            try {
+                var u = new URL(href, window.location.origin);
+                if (u.origin !== window.location.origin) return href;
+                u.pathname = u.pathname.replace(/index\.html(?=($|[?#]))/i, '');
+                return u.toString();
+            } catch (e) { return href; }
+        } else {
+            return href.replace(/index\.html(?=($|[?#]))/i, '');
+        }
+    }
+
+    function normalizeLinks() {
+        document.querySelectorAll('a[href]').forEach(function(a) {
+            var href = a.getAttribute('href');
+            var newHref = normalizeHref(href);
+            if (newHref && newHref !== href) {
+                a.setAttribute('href', newHref);
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', normalizeLinks);
+    // Nach Footer-Laden erneut normalisieren
+    document.addEventListener('footer-loaded', normalizeLinks);
+    document.addEventListener('header-loaded', normalizeLinks);
+    // Horizontal Overflow Detection
+    function detectHorizontalOverflow() {
+        var docEl = document.documentElement;
+        var overflowAmount = docEl.scrollWidth - window.innerWidth;
+        if (overflowAmount > 0) {
+            document.body.classList.add('has-horizontal-overflow');
+            console.warn('[Overflow] Horizontale Überbreite: +' + overflowAmount + 'px');
+        } else {
+            document.body.classList.remove('has-horizontal-overflow');
+        }
+    }
+    window.addEventListener('load', detectHorizontalOverflow);
+    window.addEventListener('resize', detectHorizontalOverflow);
+    document.addEventListener('footer-loaded', detectHorizontalOverflow);
+    document.addEventListener('header-loaded', detectHorizontalOverflow);
+})();
+
 // ===== COOKIE BANNER =====
 document.addEventListener('DOMContentLoaded', function() {
     const cookieBanner = document.getElementById('cookie-banner');

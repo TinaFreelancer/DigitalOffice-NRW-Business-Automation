@@ -42,6 +42,53 @@
     --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
     --shadow-lg: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
+/* =====================================================
+   GLOBAL RESETS & BOX-SIZING
+   ===================================================== */
+html {
+    box-sizing: border-box;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Global Overflow Schutz */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+body.has-horizontal-overflow * {
+    outline: 1px solid rgba(255, 0, 0, 0.15);
+}
+
+/* Responsive Medien */
+img, svg, video, iframe, embed, object {
+    max-width: 100%;
+    height: auto;
+}
+
+img, svg {
+    display: block;
+}
+
+/* Text-Umbruch für lange Strings */
+.container, p, .footer-links, .tcb-plain-text, .hero-subtitle {
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+/* Flex/Grid Kinder dürfen schrumpfen */
+.hero-content > *,
+.service-box,
+.review-card,
+.step-card,
+.footer-col,
+.two-columns > *,
+.service-boxes > * {
+    min-width: 0;
+}
 
 /* =====================================================
    RESET & BASE
@@ -162,14 +209,17 @@ strong {
     margin: 0 auto;
     padding: 0 var(--spacing-lg);
     text-align: center;
+    box-sizing: border-box;
 }
 
 section {
     padding: var(--spacing-xl) 0;
+    overflow-x: hidden;
 }
 
 section .container {
     width: 100%;
+    max-width: 100%;
 }
 
 .two-columns {
@@ -446,6 +496,26 @@ section .container {
     transform: scale(1.1);
 }
 
+/* Erzwinge maximale Breiten global */
+.site-footer,
+.site-footer .container,
+.site-footer .footer-grid {
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+}
+
+/* Swiper Container begrenzen */
+.swiper,
+.swiper-container {
+    max-width: 100% !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+}
+
+.swiper-wrapper {
+    box-sizing: border-box !important;
+}
+
 .footer-social a svg {
     width: 20px;
     height: 20px;
@@ -483,10 +553,10 @@ section .container {
 }
 /* Wrapper für Seiteninhalt statt Body-Margins */
 .page-wrapper {
-    margin: 0 5%;
+    margin: 0;
 }
 @media (max-width: 767px) {
-    .page-wrapper { margin: 0 3%; }
+    .page-wrapper { margin: 0; }
 }
 
 .site-header .container,
@@ -495,16 +565,24 @@ section .container {
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: center !important;
-    max-width: none !important;
+    max-width: 100% !important;
     padding: 0 !important;
     margin: 0 !important;
     width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 .site-header .logo img {
     max-width: 200px;
     height: auto;
     display: block;
+}
+
+/* Erzwinge maximale Breiten für Header */
+.site-header {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
 }
 
 .site-header .logo {
@@ -644,20 +722,32 @@ section .container {
    FOOTER
    ===================================================== */
 .site-footer {
-    background-color: rgba(36, 146, 69, 0.397);
+    position: relative;
     color: var(--color-white);
-    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg);
+    padding: var(--spacing-xl) 0 var(--spacing-lg);
     border-top: 1px solid var(--color-accent);
-    width: 110%;
-    margin-left: -5%;
-    margin-right: -5%;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
 }
+.site-footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(36, 146, 69, 0.397);
+    z-index: 0;
+}
+.site-footer .footer-grid,
+.site-footer .footer-col,
+.site-footer .container { position: relative; z-index: 1; }
 
 .site-footer .container {
-    max-width: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
+    max-width: 1200px;
+    padding: 0 var(--spacing-md);
+    margin: 0 auto;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .footer-grid {
@@ -1569,7 +1659,7 @@ section .container {
     }
     
     .two-columns {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     
     /* Hero Desktop Layout */
@@ -1591,16 +1681,16 @@ section .container {
     
     /* Cards */
     .service-cards {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     
     .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     
     /* Contact Grid */
     .contact-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: var(--spacing-2xl);
     }
     
@@ -1614,7 +1704,7 @@ section .container {
     
     /* Footer */
     .footer-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         text-align: left;
     }
     
@@ -1665,7 +1755,7 @@ section .container {
     }
     
     .footer-content {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         text-align: left;
     }
     
@@ -1675,18 +1765,18 @@ section .container {
     
     /* Contact */
     .contact-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     
     /* Package Grid */
     .package-grid,
     .features-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     
     /* Angebot Service Item */
     .angebot-page .service-item {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         align-items: stretch;
         gap: var(--spacing-2xl);
     }
@@ -1718,22 +1808,22 @@ section .container {
     
     /* About Images */
     .image-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
     
     /* About Values */
     .value-content {
-        grid-template-columns: 1fr 2fr;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
     }
     
     /* Service Boxes responsive */
     .service-boxes {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     
     /* Reviews Grid */
     .reviews-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
 
@@ -1907,6 +1997,51 @@ section .container {
     .target-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+/* =============================================
+   Overflow-Härtung (gezielte, sichere Ergänzungen)
+   ============================================= */
+/* Clip horizontale Überbreite in Schlüssel-Containern */
+.site-header,
+.site-footer,
+section,
+.container,
+.footer-grid,
+.footer-content {
+    overflow-x: clip;
+}
+
+/* Swiper/Thrive Wrapper: begrenzen und enthalten */
+.tve-swiper-container,
+.tve-swiper-wrapper,
+.swiper,
+.swiper-container,
+.swiper-wrapper {
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: clip;
+}
+
+.swiper-wrapper,
+.tve-swiper-wrapper {
+    contain: layout paint;
+}
+
+/* Flex/Grid Kinder dürfen schrumpfen (breiter Inhalt verhindern) */
+.footer-grid > *,
+.footer-content > *,
+.contact-grid > *,
+.two-columns > *,
+.service-cards > *,
+.steps-grid > * {
+    min-width: 0;
+}
+
+/* Medien bleiben innerhalb des Containers */
+img, video, svg, canvas, iframe {
+    max-width: 100%;
+    height: auto;
 }
 
 @media (min-width: 1024px) {
