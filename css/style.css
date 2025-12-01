@@ -2972,6 +2972,12 @@ section {
     z-index: 2;
 }
 
+.gradient-hero h2 {
+    color: #000000;
+    position: relative;
+    z-index: 2;
+}
+
 /* Breadcrumb Navigation */
 .breadcrumb {
     display: flex;
