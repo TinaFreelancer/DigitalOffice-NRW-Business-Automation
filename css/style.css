@@ -8,7 +8,8 @@
    ===================================================== */
 :root {
     /* Colors - Erweiterte Palette */
-    --color-primary: rgb(203, 159, 247);
+    /* Primärfarbe abgedunkelt für besseren Kontrast (vorher 203,159,247) */
+    --color-primary: rgb(175, 120, 235);
     --color-cta: rgb(138, 143, 140);
     --color-cta-hover: rgb(162, 202, 181);
     --color-accent: rgb(193, 175, 202);
@@ -264,13 +265,13 @@ section .container {
 
 .cta-button-primary {
     background-color: var(--color-primary);
-    color: var(--color-text-dark);
+    color: var(--color-white);
     box-shadow: var(--shadow-md);
 }
 
 .cta-button-primary:hover {
-    background-color: var(--color-cta);
-    color: var(--color-white);
+    background-color: var(--color-primary);
+    filter: brightness(1.08);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
@@ -283,6 +284,7 @@ section .container {
 
 .cta-button-secondary:hover {
     background-color: var(--color-primary);
+    color: var(--color-white);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -2467,8 +2469,9 @@ tbody > tr:nth-of-type(even) {
 .cta-button-secondary:focus,
 button:focus,
 a:focus {
-    outline: 3px solid var(--color-cta);
+    outline: 3px solid var(--color-white);
     outline-offset: 3px;
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.55), var(--shadow-md);
 }
 
 /* CTA Button Large */

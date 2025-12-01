@@ -36,7 +36,26 @@ RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
   ExpiresByType image/webp "access plus 1 year"
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
+  ExpiresByType font/woff "access plus 1 year"
+  ExpiresByType font/ttf  "access plus 1 year"
 </IfModule>
+
+# Erweiterte Cache-Control für granulare Steuerung
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:js|css|png|jpg|jpeg|gif|webp|avif|svg|ico|woff2|woff|ttf|eot)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(?:html|json|xml)$">
+    Header set Cache-Control "public, max-age=600, s-maxage=600"
+  </FilesMatch>
+  # Entferne ETag für konsistente Cache-Invalidierung bei Multi-Server Deployments
+  Header unset ETag
+</IfModule>
+
+# Deaktiviere serverseitige ETags (optional – reduziert Header Noise)
+FileETag None
+
+# Hinweis: Für GitHub Pages / Netlify greifen diese Regeln nicht. Dort entsprechende Plattform-Konfiguration nutzen.
 
 # 6. Security Headers
 <IfModule mod_headers.c>
