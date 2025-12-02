@@ -19,6 +19,7 @@
     --color-white: rgb(255, 255, 255);
     --color-success: rgb(76, 175, 80);
     --color-warning: rgb(255, 152, 0);
+    --color-button-text: #171717;
     
     /* Typography */
     --font-primary: 'Lucida Sans Unicode', 'Lucida Grande', 'Trebuchet MS', Arial, sans-serif;
@@ -265,7 +266,7 @@ section .container {
 
 .cta-button-primary {
     background-color: var(--color-primary);
-    color: var(--color-white);
+    color: var(--color-button-text);
     box-shadow: var(--shadow-md);
 }
 
@@ -278,13 +279,13 @@ section .container {
 
 .cta-button-secondary {
     background-color: var(--color-text-dark);
-    color: var(--color-white);
+    color: var(--color-button-text);
     box-shadow: var(--shadow-sm);
 }
 
 .cta-button-secondary:hover {
     background-color: var(--color-primary);
-    color: var(--color-white);
+    color: var(--color-button-text);
     transform: translateY(-2px);
     box-shadow: var(--shadow-md);
 }
@@ -2296,7 +2297,7 @@ tbody > tr:nth-of-type(even) {
     bottom: var(--spacing-lg);
     right: var(--spacing-lg);
     background: var(--color-cta);
-    color: var(--color-white);
+    color: var(--color-button-text);
     padding: var(--spacing-sm) var(--spacing-md);
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-lg);
@@ -3243,7 +3244,7 @@ section {
 
 .cta-button-secondary:hover {
     background-color: var(--color-primary);
-    color: var(--color-white);
+    color: var(--color-button-text);
     transform: scale(1.05);
 }
 
@@ -3380,7 +3381,7 @@ section {
 
 .sticky-cta-bar .cta-button-primary:hover {
     background-color: var(--color-cta);
-    color: var(--color-white);
+    color: var(--color-button-text);
 }
 
 /* Progress Indicator */
