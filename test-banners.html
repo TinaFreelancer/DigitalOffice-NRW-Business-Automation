@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Test</title>
+    <style>
+        body { margin: 0; padding: 20px; background: #f0f0f0; }
+        .banner { 
+            min-height: 500px; 
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
+            margin: 20px 0;
+            border: 3px solid red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h2 { color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
+    </style>
+</head>
+<body>
+    <h1>Banner Test</h1>
+    
+    <h2>Banner 1 - Email.webp</h2>
+    <div class="banner" style="background-image: url('assets/images/Email.webp');">
+        <h2>Email Banner</h2>
+    </div>
+
+    <h2>Banner 2 - I-Robot.webp</h2>
+    <div class="banner" style="background-image: url('assets/images/I-Robot.webp');">
+        <h2>I-Robot Banner</h2>
+    </div>
+
+    <h2>Banner 3 - code.webp</h2>
+    <div class="banner" style="background-image: url('assets/images/code.webp');">
+        <h2>Code Banner</h2>
+    </div>
+</body>
+</html>
