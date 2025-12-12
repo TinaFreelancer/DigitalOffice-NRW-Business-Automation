@@ -770,7 +770,7 @@ section .container {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(36, 146, 69, 0.397);
+    background: #3a3a3a;
     z-index: 0;
 }
 .site-footer .footer-grid,
